@@ -1,0 +1,11 @@
+Er modell
+
+image7: Er modell elemei
+
+image8: 2 db er modell szoveg alapjan
+
+image4: Magunktól egy Er modellt
+
+image6: Elemezni az Er modell tulajdonságait
+
+Első beadandó: saját ER modell tervezése
