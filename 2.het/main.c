@@ -3,32 +3,38 @@
 
 int main()
 {
-    pelda_1();
+    char filenev1[40];
+    char filenev2[40];
+    printf("Melyik filet szeretne olvasni: \n");
+    scanf("%s",filenev1);
+    printf("Hova szeretne masolni a filet: \n");
+    scanf("%s",filenev2);
+    pelda_2(filenev1, filenev2);
+
     return 0;
 }
-
-void pelda_1(){
-    char filenev[40];
-    FILE *fp;
+void pelda_2(char *fnev1, char *fnev2){
+    FILE *fp1, *fp2;
+    int pos;
     char ch;
-
-    printf("File nev: ");
-
-    scanf("%s",filenev);
-    fp = fopen(filenev,"w");
-    printf("File megnyitva, mi az uzenet:\n");
-
-    while((ch = getchar()) != '#'){
-        putc(ch, fp);
+    if((fp1 = fopen(fnev1,"r")) == NULL){
+        printf("\nNem lehet megnyitni a filet!");
+        return 0;
     }
-    fclose(fp);
+    printf("\nFile megnyitasa masolasra.... \n");
 
-    fp = fopen(filenev,"r");
-
-    while((ch = getc(fp)) != EOF){
-        printf("%c",toupper(ch));
+    fp2 = fopen(fnev2, "a");
+    fseek(fp1, 0L, SEEK_END);
+    pos = ftell(fp1);
+    fseek(fp1, 0L, SEEK_SET);
+    while (pos--){
+        ch = fgetc(fp1);
+        fputc(ch, fp2);
     }
+    fclose(fp1);
+    fclose(fp2);
 
-    fclose(fp);
+    printf("Sikeres masolas!");
+
     return 0;
 }
