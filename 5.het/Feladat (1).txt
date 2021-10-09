@@ -1,0 +1,2 @@
+image0: ER modellt átírni Relációs modellre
+image1: kiegészített ER modellt leírni Relációsra
